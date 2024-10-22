@@ -3,7 +3,7 @@ import React from "react";
 const Current = ({ current, location }) => {
     return (
         <div className="container mt-5">
-            <h2 className="text-white text-center mb-3">Current Weather of {location.name},{location.region},{location.country}</h2>
+            <h2 className="text-white text-center ">Current Weather of {location.name},{location.region},{location.country}</h2>
             <div className="row">
                 {/* column-1 */}
                 <div className="col-3">

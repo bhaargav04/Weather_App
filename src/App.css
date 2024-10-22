@@ -1,2 +1,12 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+body{
+    background-color: black;
+}
+/* footer{
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    ;
+} */

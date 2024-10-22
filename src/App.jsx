@@ -22,6 +22,9 @@ const App = () => {
     if (city && city.length > 3) {
       fetchAutoComplete();
     }
+    else {
+      setCitySuggest([]);
+    }
   }, [city]);
 
   // this function fetch a Autocomplete API
@@ -61,42 +64,47 @@ const App = () => {
       setForecast(res.forecast);
 
       // this print in the console as a API result
-      console.log('Current',res.current);
-      console.log('Forecast',res.forecast);
-      console.log('Location',res.location);
+      console.log('Current', res.current);
+      console.log('Forecast', res.forecast);
+      console.log('Location', res.location);
 
     } catch (e) {
       console.log('weather API error', e);
     }
   }
 
+
+
   return (
     <>
-    <h1 className="text-center mt-5" style={{fontFamily:''}}>Weather Forecast</h1>
-    <div className='container bg-primary p-5  mt-5' style={{borderRadius:'30px'}}>
-      <input type="text" value={clickedCity} className='form-control  border border-secondary' placeholder="Enter Your City Name" onChange={(e) => { setCity(e.target.value);
-      if(e.target.value===""){
-        setCurrent();
-        setLocation();
-        setClickedCity();
-        setForecast();
-      }
-       }} style={{borderRadius:'12px'}}/>
-    
-      {/* Down here i get a autocomple api and store in a city variable using selectedCity function */}
-      {citySuggest && citySuggest.map((city) => {
-        return <div className="text-center bg-info rounded p-1 bg-opacity-10 border border-info border-opacity-25 text-white" style={{ cursor: 'pointer' }} onClick={() => selectedCity(city)}>
-          {city}
-        </div>
-      })}
+      {/* timing(); */}
+      <h1 className="text-center text-white mt-5" style={{ fontFamily: '' }}>Weather Forecast</h1>
+      <div className='container bg-primary p-5  mt-5' style={{ borderRadius: '30px' }}>
+        <input type="text" value={clickedCity} className='form-control  border border-secondary' placeholder="Enter Your City Name" onChange={(e) => {
+          setCity(e.target.value);
+          if (e.target.value === "") {
+            setCurrent();
+            setLocation();
+            setClickedCity();
+            setForecast();
+          }
+        }} style={{ borderRadius: '12px' }} />
+
+        {/* Down here i get a autocomple api and store in a city variable using selectedCity function */}
+        {citySuggest && citySuggest.map((city) => {
+          return <div className="text-center bg-info rounded p-1 bg-opacity-10 border border-info border-opacity-25 text-white" style={{ cursor: 'pointer' }} onClick={() => selectedCity(city)}>
+            {city}
+          </div>
+        })}
       </div>
 
-      {clickedCity && <div className='container bg-primary p-5 rounded mt-5'>
-      {/* It's use the usestate current,location to this props down here */}
-      {current && <Current current={current} location={location}/>} 
-      {/* Down here its a conditional rendering and i send props to the forecast as a forecast */}
-      {forecast && <Forecast forecast={forecast} location={location}/>} 
+      {clickedCity && <div className='container bg-primary p-5  mt-5' style={{ borderRadius: '25px' }}>
+        {/* It's use the usestate current,location to this props down here */}
+        {current && <Current current={current} location={location} />}
+        {/* Down here its a conditional rendering and i send props to the forecast as a forecast */}
+        {forecast && <Forecast forecast={forecast} location={location} />}
       </div>}
+      <div className="text-white text-center" style={{ borderTop: '0px' }}>Contant Me : </div>
     </>
   )
 }
