@@ -104,7 +104,7 @@ const App = () => {
         {/* Down here its a conditional rendering and i send props to the forecast as a forecast */}
         {forecast && <Forecast forecast={forecast} location={location} />}
       </div>}
-      <div className="text-white text-center" style={{ borderTop: '0px' }}>Contant Me : </div>
+      {/* <div className="text-white text-center" style={{ borderTop: '0px' }}>Contant Me : </div> */}
     </>
   )
 }
