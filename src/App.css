@@ -340,6 +340,8 @@ input:checked + .slider:before {
 
 .hometown-weather {
   text-align: right;
+  display: flex;
+  justify-content: center;
 }
 
 /* Hometown Suggestions Dropdown */
